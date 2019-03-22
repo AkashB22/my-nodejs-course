@@ -1,0 +1,94 @@
+<h1>Check Details</h1>
+<a class="backButton" href="/checks/all">Back</a>
+
+<hr/>
+
+<h2>Edit the check details</h2>
+
+<div class="formWrapper">
+    <form id="checkEdit1" action="/api/check" method="PUT">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="formError"></div>
+        <div class="formSuccess">Your changes has been saved</div>
+        <input type="hidden" class="hiddenIdInput" name="uid" />
+
+        <div class="inputWrapper">
+            <div class="inputLabel">Check ID</div>
+            <input type="text" name ="displayId" class="disabled displayIdInput" disabled />
+        </div>
+
+        <div class="inputWrapper">
+            <div class="inputLabel">Current state</div>
+            <input type="text" class="disabled displayStateInput" name="displayState" disabled />
+        </div>
+
+        <div class="inputWrapper">
+            <div class="inputLabel">Protocol</div>
+            <select class="protocolInput" name="protocol">
+                <option value="http">http://</option>
+                <option value="https">https://</option>
+            </select>
+        </div>
+
+        <div class="inputWrapper">
+            <div class="inputLabel">Url (Not including protocol)</div>
+            <input class="urlInput" type="text" name="url" placeholder="mywebsite.com/my/path" />
+        </div>
+
+        <div class="inputWrapper">
+            <div class="inputLabel">Success code (http code that should represent state as up)</div>
+            <div class="checkboxGroup">
+                <input type="checkbox" class="successCodesInput multiselect intval" name="successCodes" value="200">200
+                <input type="checkbox" class="successCodesInput multiselect intval" name="successCodes" value="201">201                
+                <input type="checkbox" class="successCodesInput multiselect intval" name="successCodes" value="300">300
+                <input type="checkbox" class="successCodesInput multiselect intval" name="successCodes" value="301">301
+                <input type="checkbox" class="successCodesInput multiselect intval" name="successCodes" value="302">302
+                <input type="checkbox" class="successCodesInput multiselect intval" name="successCodes" value="400">400
+                <input type="checkbox" class="successCodesInput multiselect intval" name="successCodes" value="404">404
+                <input type="checkbox" class="successCodesInput multiselect intval" name="successCodes" value="406">406
+                <input type="checkbox" class="successCodesInput multiselect intval" name="successCodes" value="500">500
+            </div>
+        </div>
+
+        <div class="inputWrapper">
+            <div class="inputLabel">HTTP method</div>
+            <select name="httpMethod" class="methodInput">
+                <option value="post">POST</option>
+                <option value="get">GET</option>
+                <option value="put">PUT</option>
+                <option value="post">DELETE</option>
+            </select>
+        </div>
+
+        <div class="inputWrapper">
+            <div class="inputLabel">Tiemout</div>
+            <select name="timeOutSeconds" class="timeOutInput intval">
+                <option value="1">1 Second</option>
+                <option value="2">2 Seconds</option>
+                <option value="3">3 Seconds</option>
+                <option value="4">4 Seconds</option>
+                <option value="5">5 Seconds</option>
+            </select>
+        </div>
+
+        <div class="inputWrapper ctaWrapper">
+            <button type="submit" class="cta green">save</button>
+        </div>
+    </form>
+</div>
+
+
+<hr />
+
+<h2>Delete Check</h2>
+<div class="formWrapper">
+    <form id="checkEdit2" action="/api/check" method="DELETE">
+        <input type="hidden" name="_method" value="DELETE">
+        <div class="formError"></div>
+        <div class="warning">Warning: This action can not be undone. Dont click the button on accident!</div>
+        <input type="hidden" class="hiddenIdInput" name="uid" >
+        <div class="inputWrapper ctaWrapper">
+            <button type="submit" class="cta red">Delete Check</button>
+        </div>
+    </form>
+</div>
