@@ -14,7 +14,11 @@
  var app={};
 
  //Init function
- app.init = function(callback){
+ app.init = function(){
+
+    //declaring a global that strict mode should catch
+    foo = "bar";
+
     //start the server
     server.init();
     //start the workers
@@ -22,14 +26,11 @@
     //Start the cli at last because it doesn't disturb our applcation
     setTimeout(function(){
       cli.init();
-      callback();
     }, 50) 
  };
 
- //self invoking only if we call directly
- if(require.main === module){
-  app.init(function(){});
- }
+ //Execute that function
+ app.init();
 
 //Export the app
 module.exports = app;
